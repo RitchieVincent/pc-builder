@@ -1,0 +1,345 @@
+@font-face {
+  font-family: "Klavika Md";
+  src: url("./fonts/Klavika-Medium.woff2") format("woff2"),
+    url("./fonts/Klavika-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Klavika Rg";
+  src: url("./fonts/Klavika-RegularItalic.woff2") format("woff2"),
+    url("./fonts/Klavika-RegularItalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Klavika Md";
+  src: url("./fonts/Klavika-MediumItalic.woff2") format("woff2"),
+    url("./fonts/Klavika-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Klavika Lt";
+  src: url("./fonts/Klavika-LightItalic.woff2") format("woff2"),
+    url("./fonts/Klavika-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Klavika Bd";
+  src: url("./fonts/Klavika-Bold.woff2") format("woff2"),
+    url("./fonts/Klavika-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Klavika Bd";
+  src: url("./fonts/Klavika-BoldItalic.woff2") format("woff2"),
+    url("./fonts/Klavika-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Klavika Lt";
+  src: url("./fonts/Klavika-Light.woff2") format("woff2"),
+    url("./fonts/Klavika-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #222;
+}
+
+.customiser {
+  overflow: scroll;
+  flex: 1;
+  box-shadow: -2px 0px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.visual {
+  width: 70vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 150%;
+    height: 150%;
+    object-fit: contain;
+    z-index: 2;
+  }
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.blue-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.customise-section {
+  // position: sticky;
+  // top: 0;
+  background-color: #151515;
+  padding: 20px 20px 40px 20px;
+  color: #fff;
+  font-size: 12px;
+
+  &:nth-child(even) {
+    background-color: #222;
+  }
+
+  &:last-of-type(:not(.customise-section--buy)) {
+    background-color: seagreen;
+  }
+
+  &--buy {
+    position: relative;
+    background-color: #fabe00;
+    height: auto;
+    top: auto;
+    padding-bottom: 20px;
+    position: sticky;
+    bottom: 0px;
+    color: #000;
+    transition: all 0.3s ease;
+    transform: translateY(calc(100% - 100px));
+
+    // &:hover {
+    //   transform: none;
+    // }
+
+    .customise-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .customise-heading {
+      margin-bottom: 0;
+      border: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.customise-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 10px 10px 0 10px;
+  max-width: 110px;
+
+  &:hover {
+    img {
+      opacity: 0.6;
+    }
+  }
+
+  label {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    padding-bottom: 5px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 2px;
+      margin-top: 5px;
+      background-color: #fabe00;
+      transform: translateX(-100%);
+    }
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+
+    &:checked + label {
+      &::after {
+        transform: none;
+        transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-family: "Klavika Bd";
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+
+  &__price {
+    font-size: 12px;
+    font-family: "Klavika Bd";
+    text-transform: uppercase;
+    letter-spacing: -0.02rem;
+  }
+}
+
+.customise-heading {
+  display: inline-flex;
+  font-size: 30px;
+  font-family: "Klavika Bd";
+  text-transform: uppercase;
+  letter-spacing: -0.02rem;
+  margin-bottom: 10px;
+  padding-right: 20px;
+  border-bottom: 3px solid #fabe00;
+  margin-bottom: 40px;
+}
+
+.customise-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-bottom: -10px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+  }
+}
+
+.price {
+  position: relative;
+  font-size: 22px;
+  font-family: "Klavika Bd";
+  text-transform: uppercase;
+  letter-spacing: -0.02rem;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 3px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform: translateX(-100%);
+  }
+
+  &[data-animating="true"] {
+    &::after {
+      transform: translateX(100%);
+      transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+}
+
+.final {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.final-heading {
+  font-size: 14px;
+  font-family: "Klavika Bd";
+  text-transform: uppercase;
+  letter-spacing: -0.02rem;
+  margin-right: 5px;
+  margin-bottom: -2px;
+}
+
+.buy-btn {
+  border: 2px solid #000;
+  width: 220px;
+  height: 50px;
+  font-size: 14px;
+  font-family: "Klavika Bd";
+  text-transform: uppercase;
+  letter-spacing: -0.02rem;
+  background: none;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+.side-text {
+  position: absolute;
+  left: -135px;
+  top: 50%;
+  transform: translateY(-100%) rotate(-90deg);
+  font-family: "Klavika Bd";
+  text-transform: uppercase;
+  letter-spacing: -0.02rem;
+  color: #00fff5;
+  opacity: 0.08;
+  font-size: 160px;
+  z-index: 0;
+}
+
+[data-case-active="true"],
+[data-case-active="false"] {
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+[data-case-active="false"] {
+  opacity: 0;
+  visibility: hidden;
+}
